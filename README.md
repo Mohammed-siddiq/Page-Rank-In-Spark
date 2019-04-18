@@ -119,7 +119,7 @@ Build the jar using
 sbt clean assembly
 ````
 
-This will run all the test cases and if they pass (which they will) builds a fat jat.
+This will run all the test cases and if they pass (which they will) builds a fat jar.
 
 Run the following command to run the spark job in the `local mode` 
 
@@ -128,6 +128,7 @@ spark-submit --class PageRank \
 --master local --deploy-mode client --executor-memory 1g \
 --name sampleRun --conf "spark.app.id=sampleRun" \
 Spark-PageRank-assembly-0.1.0.jar hdfs://192.168.151.156:8020/user/cloudera/input/dblp.xml hdfs://192.168.151.156:8020/user/cloudera/rankedAuthors hdfs://192.168.151.156:8020/user/cloudera/rankedVenues
+
 ```
 where `hdfs://192.168.151.156:8020/user/cloudera/input/dblp.xml` is the input path containing the dblp file. Replace with your HDFS path.
 
@@ -136,8 +137,10 @@ and `hdfs://192.168.151.156:8020/user/cloudera/rankedAuthors` `hdfs://192.168.15
 
 Command to run on the amazon EMR :
 
-```$xslt
+```
+
  spark-submit --class PageRank s3://mohammedsiddiq.cs.uic/pageRankJar/Spark-PageRank-assembly-0.1.0.jar s3://mohammedsiddiq.cs.uic/dblp.xml s3://mohammedsiddiq.cs.uic/latestauthorsranked s3://mohammedsiddiq.cs.uic/latestvenuesranked
+
 ```
 
 Please refer this short video for summary of the running project on EMR.
