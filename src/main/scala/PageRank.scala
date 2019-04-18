@@ -11,7 +11,6 @@ object PageRank extends App {
   val sparkConf = new SparkConf().setAppName("Sample Spark Scala Application")
   val sc = new SparkContext(sparkConf)
   val logger: Logger = LoggerFactory.getLogger(this.getClass)
-  val csAuthors = Utils.UIC_CS_AUTHORS
 
 
   sc.hadoopConfiguration.set(XmlInputFormatWithMultipleTags.START_TAG_KEYS, Utils.START_TAGS)
@@ -29,6 +28,7 @@ object PageRank extends App {
     val authorPattern = Utils.AUTHORS_PATTERN.r
     //Extracting authors and filtering only UIC CS AUTHORS
     val authors = authorPattern.findAllIn(xmlEntry).toList.map(a => a.replaceAll("<.*?>", "").trim).filter(a => {
+      val csAuthors = Utils.UIC_CS_AUTHORS
       csAuthors.contains(a.toLowerCase)
     })
     val venuePattern = Utils.VENUES_PATTERN.r
@@ -61,8 +61,14 @@ object PageRank extends App {
   }
 
 
-  val rankedAuthors = ranks.filter(x => csAuthors.contains(x._1.toLowerCase)).sortBy(x => x._2, ascending = false)
-  val rankedVenues = ranks.filter(x => !csAuthors.contains(x._1.toLowerCase)).sortBy(x => x._2, ascending = false)
+  val rankedAuthors = ranks.filter(x => {
+    val csAuthors = Utils.UIC_CS_AUTHORS
+    csAuthors.contains(x._1.toLowerCase)
+  }).sortBy(x => x._2, ascending = false)
+  val rankedVenues = ranks.filter(x => {
+    val csAuthors = Utils.UIC_CS_AUTHORS
+    !csAuthors.contains(x._1.toLowerCase)
+  }).sortBy(x => x._2, ascending = false)
 
   rankedAuthors.saveAsTextFile(args(1))
   rankedVenues.saveAsTextFile(args(2))
