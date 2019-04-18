@@ -3,7 +3,7 @@ package commons
 import com.typesafe.config.ConfigFactory
 import org.apache.hadoop.conf.Configuration
 
-object Utils {
+object ConfigUtils {
   // a regular expression which matches commas but not commas within double quotations
   val AUTHORS_PATTERN =
     """<author>.*?<\/author>"""
