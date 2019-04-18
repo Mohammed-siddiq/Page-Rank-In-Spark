@@ -4,7 +4,7 @@ Page rank implementation on the authors and venues graph generated from the DBLP
 
 ##Description
 
-- [DBLP dataset]() (represented in XML format) describes the publications, authors and the venues of the publication.
+- [DBLP dataset](https://dblp.uni-trier.de/) (represented in XML format) describes the publications, authors and the venues of the publication.
 - This file is hosted on HDFS and logical splits of each publication is done using the custom implementation of [XMLInputFormat]().
 - RDD is constructed using this file on HDFS.
 - The Following operations are performed on each logical input/entry of the dataset
@@ -16,7 +16,10 @@ Page rank implementation on the authors and venues graph generated from the DBLP
 - After the algorithm stabilizes the page rank values, the ranked nodes are sorted based on the page rank values.
 - The authors and venues are filtered out accordingly based on their ranks.
 
-The following is an example output for the UIC authors in the DBLP dataset. Ranked based on their page rank values :
+The following is an example output for the UIC authors in the DBLP dataset.
+
+Authors page rank
+-
 
 ```$xslt
 
@@ -56,10 +59,9 @@ The following is an example output for the UIC authors in the DBLP dataset. Rank
     
     .........
 ```
-    
-    
-   
-And the Venues ranked 
+     
+Venues page rank
+-
 
 ```$xslt
 
@@ -109,7 +111,6 @@ And the Venues ranked
 .
 ``` 
     
-
 ## Steps to Run 
 
 Build the jar using
