@@ -21,8 +21,7 @@ The following is an example output for the UIC authors in the DBLP dataset.
 Authors page rank
 -
 
-```$xslt
-
+```
     (Philip S. Yu,72.17358923786207)
     
     (Bing Liu,39.06762535082672)
@@ -59,12 +58,13 @@ Authors page rank
     
     .........
 ```
+   
      
 Venues page rank
 -
 
-```$xslt
 
+```
 (CoRR,7.283664532969762)
 
 (IJCAI,2.8915321964265495)
