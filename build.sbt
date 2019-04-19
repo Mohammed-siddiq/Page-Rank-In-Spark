@@ -12,8 +12,8 @@ lazy val app = (project in file(".")).
   ).
   enablePlugins(AssemblyPlugin)
 libraryDependencies ++= Seq("org.slf4j" % "slf4j-api" % "1.7.5",
-  "org.slf4j" % "slf4j-simple" % "1.7.5", "com.typesafe" % "config" % "1.3.2", "com.databricks" %% "spark-xml" % "0.5.0",
-  "org.apache.spark" %% "spark-core" % "2.4.0", "org.apache.spark" %% "spark-sql" % "2.4.0")
+  "org.slf4j" % "slf4j-simple" % "1.7.5", "com.typesafe" % "config" % "1.3.2",
+  "org.apache.spark" %% "spark-core" % "2.4.0", "org.apache.spark" %% "spark-sql" % "2.4.0", "org.scalatest" %% "scalatest" % "3.0.5" % "test")
 
 assemblyMergeStrategy in assembly := {
   case PathList("META-INF", xs@_*) => MergeStrategy.discard

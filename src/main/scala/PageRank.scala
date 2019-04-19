@@ -1,6 +1,6 @@
 import Jhelpers.XmlInputFormatWithMultipleTags
 import com.typesafe.config.ConfigFactory
-import commons.{ConfigUtils, PageRankUtils}
+import commons.{ConfigUtils, PageRankImplementer}
 import org.apache.hadoop.conf.Configuration
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.hadoop.io.{LongWritable, Text}
@@ -29,27 +29,19 @@ object PageRank extends App {
 
 
   val nodePairs = records.flatMap(record => {
-    PageRankUtils.generateNodePairs(record)
+    PageRankImplementer.generateNodePairs(record)
   }).distinct() //Taking those entries in which there's at least one UIC CS authors
 
 
   logger.info("Applying page rank..")
   //Applying page rank on the above generated nodes
-  val ranks = PageRankUtils.applyPageRank(nodePairs)
+  val ranks = PageRankImplementer.applyPageRank(nodePairs)
 
   // Ranking authors based on Pagerank
-
-  val rankedAuthors = ranks.filter(x => {
-    val csAuthors = ConfigUtils.UIC_CS_AUTHORS
-    csAuthors.contains(x._1.toLowerCase)
-  }).sortBy(x => x._2, ascending = false)
-
+  val rankedAuthors = PageRankImplementer.rankAuthors(ranks)
 
   //Ranking venues based on page rank
-  val rankedVenues = ranks.filter(x => {
-    val csAuthors = ConfigUtils.UIC_CS_AUTHORS
-    !csAuthors.contains(x._1.toLowerCase)
-  }).sortBy(x => x._2, ascending = false)
+  val rankedVenues = PageRankImplementer.rankVenues(ranks)
 
   //Persisting authors ranks
   rankedAuthors.saveAsTextFile(args(1))

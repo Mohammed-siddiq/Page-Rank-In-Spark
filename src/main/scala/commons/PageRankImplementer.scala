@@ -3,7 +3,22 @@ package commons
 import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.spark.rdd.RDD
 
-object PageRankUtils {
+object PageRankImplementer {
+  def rankVenues(ranks: RDD[(String, Double)]) = {
+    ranks.filter(x => {
+      val csAuthors = ConfigUtils.UIC_CS_AUTHORS
+      !csAuthors.contains(x._1.toLowerCase)
+    }).sortBy(x => x._2, ascending = false)
+  }
+
+  def rankAuthors(ranks: RDD[(String, Double)]) = {
+    ranks.filter(x => {
+      val csAuthors = ConfigUtils.UIC_CS_AUTHORS
+      csAuthors.contains(x._1.toLowerCase)
+    }).sortBy(x => x._2, ascending = false)
+
+  }
+
 
   /**
     *
@@ -56,5 +71,6 @@ object PageRankUtils {
       if i != j
     } yield (i, j)
   }
+
 
 }

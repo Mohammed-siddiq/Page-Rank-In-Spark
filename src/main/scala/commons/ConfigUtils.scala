@@ -2,6 +2,7 @@ package commons
 
 import com.typesafe.config.ConfigFactory
 import org.apache.hadoop.conf.Configuration
+import scala.collection.JavaConverters._
 
 object ConfigUtils {
   // a regular expression which matches commas but not commas within double quotations
@@ -13,5 +14,5 @@ object ConfigUtils {
   val END_TAGS = conf.getString("END_TAGS")
   val UIC_CS_AUTHORS = conf.getStringList("UIC_CS_PROFESSORS")
   val VENUES_PATTERN = """<booktitle>[\s\S]*?<\/booktitle>|<journal>[\s\S]*?<\/journal>|<publisher>[\s\S]*?<\/publisher>|<school>[\s\S]*?<\/school>"""
-
+  val TEST_DATA = conf.getStringList("TEST_DATA").asScala
 }
