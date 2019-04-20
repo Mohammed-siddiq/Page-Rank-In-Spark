@@ -1,6 +1,5 @@
 package CoreLogicTests
 
-import Jhelpers.XmlInputFormatWithMultipleTags
 import org.scalatest.FlatSpec
 import commons.{ConfigUtils, PageRankImplementer}
 import org.apache.hadoop.io.{LongWritable, Text}
