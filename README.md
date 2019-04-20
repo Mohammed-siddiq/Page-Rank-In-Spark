@@ -1,8 +1,11 @@
 #OVERVIEW
 
 Page rank implementation on the authors and venues graph generated from the DBLP dataset using SPARK.
-[![Please refer this short video for demonstration of the running project on EMR.](thumbnail.png)](https://youtu.be/OetsAniwOVM "Demo of the project" )
 
+
+
+[![Please refer this short video for demonstration of the running project on EMR.](thumbnail.png)](https://youtu.be/OetsAniwOVM "Demo of the project" )
+-
 ##Description
 
 - [DBLP dataset](https://dblp.uni-trier.de/) (represented in XML format) describes the publications, authors and the venues of the publication.
