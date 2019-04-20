@@ -12,7 +12,7 @@ Page rank implementation on the authors and venues graph generated from the DBLP
     - Node links are generated between the co-authors and the venues (bi-directional graph is considered).
     - Every link in the graph is given am initial probability (Initial page rank).
     - These links are cached since page rank runs on the basis of these links and every worker/task needs access to it.
-- Page rank is applied iteratively over the nodes/links in the graph. The damping/teleportation factor is considered to be 0.15. [Refer to this link for more details on page rank in the spark ]()
+- Page rank is applied iteratively over the nodes/links in the graph. The damping/teleportation factor is considered to be 0.15. [Refer to this link for more details on page rank in the spark ](https://community.hortonworks.com/idea/102753/tutorial-101-pagerank-example-in-spark-20-understa.html)
 - After the algorithm stabilizes the page rank values, the ranked nodes are sorted based on the page rank values.
 - The authors and venues are filtered out accordingly based on their ranks.
 
