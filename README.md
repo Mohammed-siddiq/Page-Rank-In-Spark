@@ -12,7 +12,7 @@ Page rank implementation on the authors and venues graph generated from the DBLP
     - Node links are generated between the co-authors and the venues (bi-directional graph is considered).
     - Every link in the graph is given am initial probability (Initial page rank).
     - These links are cached since page rank runs on the basis of these links and every worker/task needs access to it.
-- Page rank is applied iteratively over the nodes/links in the graph. The damping/teleportation factor is considered to be 0.15.
+- Page rank is applied iteratively over the nodes/links in the graph. The damping/teleportation factor is considered to be 0.15. [Refer to this link for more details on page rank in the spark ]()
 - After the algorithm stabilizes the page rank values, the ranked nodes are sorted based on the page rank values.
 - The authors and venues are filtered out accordingly based on their ranks.
 
@@ -143,4 +143,4 @@ Command to run on the amazon EMR :
 
 ```
 
-Please refer this short video for summary of the running project on EMR.
+[![Please refer this short video for demonstration of the running project on EMR.](thumbnail.png)](https://youtu.be/OetsAniwOVM "Demo of the project" )
