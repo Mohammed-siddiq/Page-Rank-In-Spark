@@ -1,4 +1,4 @@
-#OVERVIEW
+# OVERVIEW
 
 Page rank implementation on the authors and venues graph generated from the DBLP dataset using SPARK.
 
@@ -6,7 +6,7 @@ Page rank implementation on the authors and venues graph generated from the DBLP
 
 [![Please refer this short video for demonstration of the running project on EMR.](thumbnail.png)](https://youtu.be/OetsAniwOVM "Demo of the project" )
 -
-##Description
+## Description
 
 - [DBLP dataset](https://dblp.uni-trier.de/) (represented in XML format) describes the publications, authors and the venues of the publication.
 - This file is hosted on HDFS and logical splits of each publication is done using the customized implementation of [XMLInputFormat](https://github.com/apache/mahout/blob/ad84344e4055b1e6adff5779339a33fa29e1265d/examples/src/main/java/org/apache/mahout/classifier/bayes/XmlInputFormat.java) supporting multiple start and end tags in an XML.
